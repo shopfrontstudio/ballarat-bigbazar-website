@@ -110,7 +110,7 @@ function filteredProducts() {
 function productTile(product, category) {
   return `<div class="product-tile" style="background:${category.hue}">
     <span class="tile-emoji">${category.emoji}</span>
-    <img src="/assets/products/${product.id}.jpg" alt="${escapeHtml(product.brand)} ${escapeHtml(product.name)}" loading="lazy" onerror="this.remove()" />
+    <img src="assets/products/${product.id}.jpg" alt="${escapeHtml(product.brand)} ${escapeHtml(product.name)}" loading="lazy" onerror="this.remove()" />
   </div>`;
 }
 
