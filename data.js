@@ -75,7 +75,7 @@ export const PRODUCTS = [
   { id: 'bambino-soan-papdi', cat: 'snacks', brand: 'Bambino', name: 'Soan Papdi', size: '250 g', price: 5 },
   { id: 'parle-g', cat: 'snacks', brand: 'Parle', name: 'Parle-G Biscuits (family pack)', size: '752 g', price: 4.5 },
   { id: 'britannia-bourbon', cat: 'snacks', brand: 'Britannia', name: 'Bourbon Cream Biscuits', size: '390 g', price: 4 },
-  { id: 'britannia-cake-rusk', cat: 'snacks', brand: 'Britannia', name: 'Cake Rusk', size: '560 g', price: 7 },
+  { id: 'britannia-cake-rusk', cat: 'snacks', brand: 'Britannia', name: 'Milk Rusk', size: '560 g', price: 7 },
   { id: 'maggi-noodles', cat: 'snacks', brand: 'Maggi', name: 'Masala Noodles (8 pack)', size: '560 g', price: 6.5 },
   { id: 'kurkure', cat: 'snacks', brand: 'Kurkure', name: 'Masala Munch', size: '75 g', price: 2.5 },
   { id: 'gits-dosa', cat: 'snacks', brand: 'Gits', name: 'Dosa Mix', size: '500 g', price: 6 },
@@ -111,7 +111,7 @@ export const PRODUCTS = [
 
   // Tea & drinks
   { id: 'wagh-bakri-1kg', cat: 'drinks', brand: 'Wagh Bakri', name: 'Premium Tea', size: '1 kg', price: 16 },
-  { id: 'wagh-bakri-masala', cat: 'drinks', brand: 'Wagh Bakri', name: 'Masala Chai', size: '250 g', price: 6.5 },
+  { id: 'wagh-bakri-masala', cat: 'drinks', brand: 'Wagh Bakri', name: 'Masala Chai Tea Bags', size: '200 g', price: 6.5 },
   { id: 'red-label-900', cat: 'drinks', brand: 'Brooke Bond', name: 'Red Label Tea', size: '900 g', price: 14 },
   { id: 'rooh-afza', cat: 'drinks', brand: 'Hamdard', name: 'Rooh Afza', size: '750 ml', price: 8 },
   { id: 'thums-up', cat: 'drinks', brand: 'Thums Up', name: 'Soft Drink', size: '300 ml', price: 2.5 },

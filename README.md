@@ -46,6 +46,18 @@ The finished site is generated in `dist/`.
 - Opening hours (currently shown as "Open 7 days from 10:30 am").
 - Phone number (not publicly listed anywhere; only the email
   ballaratbigbazar@gmail.com is shown).
-- Real stock list and prices in `data.js` — current entries are realistic
-  placeholders based on typical Indian-grocer stock and are labelled on the
-  site as a guide, confirmed at pickup.
+- Real stock list and prices in `data.js` — the range and brands are aligned
+  with what comparable Indian grocers in Ballarat actually stock (Shan, MDH,
+  Everest, Eastern, Pattu, Indya, Deep, Daawat, Aashirvaad, Bikano, Amul…),
+  but prices are still estimates labelled on the site as a guide, confirmed
+  at pickup.
+
+## Product photos
+
+Photos in `assets/products/` are genuine packshots sourced from
+[Open Food Facts](https://world.openfoodfacts.org) (CC BY-SA — attribution is
+in the site footer). Cards fall back to a styled category tile when no photo
+exists (mostly house-brand importer lines like Pattu/Shudh/Indya that aren't
+in Open Food Facts). To add or replace a photo, drop a `<product-id>.jpg`
+into `assets/products/` — best of all, replace them over time with photos
+taken in store.
