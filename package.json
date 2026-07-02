@@ -1,0 +1,12 @@
+{
+  "name": "ballarat-bigbazar-website",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "description": "Ballarat Bigbazar — South Asian grocery store in Wendouree, Ballarat",
+  "scripts": {
+    "dev": "node server.mjs",
+    "build": "node build.mjs",
+    "preview": "PORT=4173 node server.mjs dist"
+  }
+}
