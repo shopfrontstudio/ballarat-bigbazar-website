@@ -231,3 +231,21 @@ body.drawer-open{overflow:hidden}
 
 @media(max-width:900px){.hero-search{height:54px;border-radius:16px}.hero-search button{padding:0 14px}.category-visual.catalogue-stack{height:230px}.fresh-mini-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){.hero-search{grid-template-columns:40px 1fr;height:54px;margin-bottom:24px}.hero-search button{display:none}.hero-search input{font-size:13px}.category-card{border-radius:20px}.catalogue-stack img{max-width:50%;max-height:72%;border-radius:14px}.catalogue-pack{width:110px;height:110px;font-size:19px}.fresh-catalogue{border-radius:24px;padding:12px}.fresh-catalogue>img{border-radius:18px}.fresh-mini-grid a{border-radius:14px;min-height:68px}}
+
+/* ===== v4 — smarter shop UX and richer imagery ===== */
+.floating-recipe-cta{position:fixed;right:24px;bottom:24px;z-index:70;display:flex;align-items:center;gap:10px;background:var(--gold);color:var(--green-dark);border:1px solid rgba(23,61,45,.12);border-radius:999px;padding:12px 18px 12px 12px;box-shadow:0 16px 45px rgba(14,42,32,.22);font-size:13px;letter-spacing:.01em;transition:transform .2s,box-shadow .2s}
+.floating-recipe-cta:hover{transform:translateY(-3px);box-shadow:0 22px 55px rgba(14,42,32,.28)}
+.floating-recipe-cta span{width:36px;height:36px;border-radius:50%;background:#fff;display:grid;place-items:center}
+.floating-recipe-cta strong{white-space:nowrap}
+body:not([data-view=home]) .floating-recipe-cta{display:none}
+.product-tile-fresh img{object-fit:cover;padding:0;background:#f7f2e8}
+.product-tile-fresh .tile-emoji{display:none}
+.recipe-tile,.recipe-hero-tile{position:relative;overflow:hidden}
+.recipe-tile img,.recipe-hero-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.recipe-tile span,.recipe-hero-tile span{position:relative;z-index:0}
+.recipe-card-info{background:#fff}
+.recipe-hero-tile{border-radius:32px 32px 32px 8px}
+.recipe-hero-tile img{border-radius:inherit}
+.shop #shop-search{box-shadow:0 8px 26px rgba(24,49,41,.06)}
+.no-results{background:#fff;border:1px dashed rgba(23,61,45,.2);border-radius:18px}
+@media(max-width:760px){.floating-recipe-cta{right:14px;bottom:14px;padding:10px 14px 10px 10px}.floating-recipe-cta span{width:32px;height:32px}.floating-recipe-cta strong{font-size:12px}.recipe-tile{height:190px}}

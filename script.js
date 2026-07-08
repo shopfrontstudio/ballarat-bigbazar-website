@@ -6,6 +6,102 @@ const productById = (id) => PRODUCTS.find((product) => product.id === id);
 const categoryById = (id) => CATEGORIES.find((category) => category.id === id);
 const money = (value) => `$${value.toFixed(2)}`;
 const escapeHtml = (text) => text.replace(/[&<>"']/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+const normalizeSearch = (text) => String(text || '')
+  .toLowerCase()
+  .normalize('NFD')
+  .replace(/[\u0300-\u036f]/g, '')
+  .replace(/&/g, ' and ')
+  .replace(/[^a-z0-9]+/g, ' ')
+  .replace(/\s+/g, ' ')
+  .trim();
+const searchTokens = (text) => normalizeSearch(text).split(' ').filter((token) => token.length > 1);
+
+const CATEGORY_ALIASES = {
+  masalas: ['masala', 'masalas', 'spice', 'spices', 'powder', 'curry powder', 'seasoning', 'mix'],
+  rice: ['rice', 'basmati', 'chawal', 'sona masoori', 'poha', 'grain', 'grains'],
+  flour: ['atta', 'aata', 'ata', 'flour', 'chapati flour', 'roti flour', 'wheat flour'],
+  dals: ['dal', 'daal', 'dhal', 'lentil', 'lentils', 'pulse', 'pulses', 'toor', 'moong', 'chana', 'masoor', 'urad', 'rajma', 'beans', 'chickpeas'],
+  snacks: ['snack', 'snacks', 'sweet', 'sweets', 'namkeen', 'biscuit', 'biscuits', 'bhujia', 'sev', 'rusk'],
+  pantry: ['pantry', 'pickle', 'pickles', 'ghee', 'oil', 'papad', 'pappad', 'chutney', 'paste', 'sauce'],
+  frozen: ['frozen', 'dairy', 'paneer', 'paratha', 'naan', 'samosa', 'yoghurt', 'yogurt', 'dahi', 'butter'],
+  drinks: ['drink', 'drinks', 'tea', 'chai', 'beverage', 'juice', 'syrup', 'lassi'],
+  fresh: ['fresh', 'produce', 'vegetable', 'vegetables', 'veg', 'sabzi', 'herb', 'herbs', 'fruit', 'fruits', 'greens'],
+};
+
+const PRODUCT_ALIASES = {
+  'aashirvaad-10': ['ashirwad atta', 'ashirwad', 'ashirvaad', 'aashirwad', 'atta', 'aata', 'ata', 'chapati flour', 'roti flour'],
+  'aashirvaad-multigrain-5': ['ashirwad atta', 'ashirwad', 'ashirvaad', 'aashirwad', 'atta', 'aata', 'ata', 'multigrain flour'],
+  'pattu-toor-1': ['dal', 'daal', 'lentil', 'lentils', 'toor daal', 'tuvar dal', 'arhar dal'],
+  'pattu-toor-2': ['dal', 'daal', 'lentil', 'lentils', 'toor daal', 'tuvar dal', 'arhar dal'],
+  'indya-moong': ['dal', 'daal', 'lentil', 'lentils', 'mung dal', 'moong daal'],
+  'pattu-chana-dal': ['dal', 'daal', 'lentil', 'lentils', 'gram dal', 'channa dal'],
+  'pattu-urad': ['dal', 'daal', 'lentil', 'lentils', 'urad daal'],
+  'indya-masoor': ['dal', 'daal', 'lentil', 'lentils', 'red lentils', 'masoor daal'],
+  'indya-rajma': ['rajma', 'kidney beans', 'beans'],
+  'indya-kabuli': ['chickpeas', 'chole', 'kabuli chana'],
+  okra: ['bhindi', 'lady finger', 'ladyfinger'],
+  'coriander-bunch': ['coriander', 'cilantro', 'dhaniya'],
+  'curry-leaves': ['curry leaf', 'kadi patta', 'kari patta'],
+  'mint-bunch': ['mint', 'pudina'],
+  'green-chillies': ['green chilli', 'green chili', 'chilli', 'chili', 'mirchi'],
+  ginger: ['adrak'],
+  garlic: ['lahsun', 'lasun'],
+  'baby-eggplant': ['eggplant', 'brinjal', 'baingan', 'aubergine'],
+  'coconut-fresh': ['coconut', 'nariyal'],
+  'onions-2kg': ['onion', 'onions', 'pyaaz', 'pyaz'],
+  tomatoes: ['tomato', 'tomatoes', 'tamatar'],
+  lemons: ['lemon', 'lemons', 'nimbu'],
+};
+
+function editDistance(a, b) {
+  if (a === b) return 0;
+  if (!a || !b) return Math.max(a.length, b.length);
+  if (Math.abs(a.length - b.length) > 3) return 4;
+  const previous = Array.from({ length: b.length + 1 }, (_, i) => i);
+  for (let i = 1; i <= a.length; i += 1) {
+    let prevDiag = previous[0];
+    previous[0] = i;
+    for (let j = 1; j <= b.length; j += 1) {
+      const tmp = previous[j];
+      previous[j] = Math.min(
+        previous[j] + 1,
+        previous[j - 1] + 1,
+        prevDiag + (a[i - 1] === b[j - 1] ? 0 : 1),
+      );
+      prevDiag = tmp;
+    }
+  }
+  return previous[b.length];
+}
+
+function tokenMatches(queryToken, candidateTokens) {
+  return candidateTokens.some((candidate) => {
+    if (candidate === queryToken) return true;
+    if (queryToken.length >= 4 && candidate.includes(queryToken)) return true;
+    if (candidate.length >= 4 && queryToken.includes(candidate)) return true;
+    const limit = queryToken.length <= 4 ? 1 : queryToken.length <= 8 ? 2 : 3;
+    return editDistance(queryToken, candidate) <= limit;
+  });
+}
+
+function productSearchTokens(product) {
+  const category = categoryById(product.cat);
+  return searchTokens([
+    product.brand,
+    product.name,
+    product.size,
+    category?.name,
+    category?.blurb,
+    ...(CATEGORY_ALIASES[product.cat] || []),
+    ...(PRODUCT_ALIASES[product.id] || []),
+  ].join(' '));
+}
+
+function resetShopSearch() {
+  searchTerm = '';
+  const input = $('#shop-search');
+  if (input) input.value = '';
+}
 
 /* ---------- Cart ---------- */
 const CART_KEY = 'bbb-cart';
@@ -98,17 +194,17 @@ function renderChips() {
 }
 
 function filteredProducts() {
-  const term = searchTerm.trim().toLowerCase();
+  const queryTokens = searchTokens(searchTerm);
   return PRODUCTS.filter((product) => {
     if (activeCategory !== 'all' && product.cat !== activeCategory) return false;
-    if (!term) return true;
-    const category = categoryById(product.cat);
-    return `${product.brand} ${product.name} ${product.size} ${category?.name || ''}`.toLowerCase().includes(term);
+    if (!queryTokens.length) return true;
+    const candidateTokens = productSearchTokens(product);
+    return queryTokens.every((token) => tokenMatches(token, candidateTokens));
   });
 }
 
 function productTile(product, category) {
-  return `<div class="product-tile" style="background:${category.hue}">
+  return `<div class="product-tile product-tile-${product.cat}" style="background:${category.hue}">
     <span class="tile-emoji">${category.emoji}</span>
     <img src="assets/products/${product.id}.jpg" alt="${escapeHtml(product.brand)} ${escapeHtml(product.name)}" loading="lazy" onerror="this.remove()" />
   </div>`;
@@ -139,7 +235,7 @@ function renderProductGrid() {
   $('#shop-count').textContent = `${products.length} ${products.length === 1 ? 'item' : 'items'} · ${label}`;
   grid.innerHTML = products.length
     ? products.map(productCard).join('')
-    : `<p class="no-results">Nothing matched that search—try a brand like "MDH" or a staple like "atta". Or <a href="mailto:ballaratbigbazar@gmail.com">email us</a>, we probably have it in store.</p>`;
+    : `<p class="no-results">Nothing matched that search. Try simple words like “atta”, “ashirwad”, “dal”, “daal”, “lentil”, “bhindi” or “chilli”. Or <a href="mailto:ballaratbigbazar@gmail.com">email us</a>, we probably have it in store.</p>`;
 }
 
 function applyShopSearchFromHero(value) {
@@ -154,7 +250,7 @@ function applyShopSearchFromHero(value) {
 /* ---------- Recipes ---------- */
 function recipeCard(recipe) {
   return `<a class="recipe-card" href="#/recipe/${recipe.id}">
-    <div class="recipe-tile"><span>${recipe.emoji}</span></div>
+    <div class="recipe-tile"><span>${recipe.emoji}</span><img src="assets/recipes/${recipe.id}.jpg" alt="${escapeHtml(recipe.name)}" loading="lazy" onerror="this.remove()" /></div>
     <div class="recipe-card-info">
       <h3>${escapeHtml(recipe.name)}</h3>
       <p>${escapeHtml(recipe.tagline)}</p>
@@ -193,7 +289,7 @@ function renderRecipeDetail(recipeId) {
   wrap.innerHTML = `
     <a class="text-link recipe-back" href="#/recipes">← All recipes</a>
     <div class="recipe-hero">
-      <div class="recipe-hero-tile"><span>${recipe.emoji}</span></div>
+      <div class="recipe-hero-tile"><span>${recipe.emoji}</span><img src="assets/recipes/${recipe.id}.jpg" alt="${escapeHtml(recipe.name)}" onerror="this.remove()" /></div>
       <div>
         <p class="eyebrow"><span></span> ${escapeHtml(recipe.tagline)}</p>
         <h2>${escapeHtml(recipe.name)}</h2>
@@ -303,6 +399,7 @@ async function submitOrder(form) {
 const views = { home: '#view-home', shop: '#view-shop', recipes: '#view-recipes', recipe: '#view-recipe' };
 
 function showView(name) {
+  document.body.dataset.view = name;
   Object.entries(views).forEach(([key, selector]) => { $(selector).hidden = key !== name; });
   $$('.desktop-nav a, .mobile-nav a').forEach((link) => {
     const href = link.getAttribute('href');
@@ -323,9 +420,15 @@ function route() {
   }
   const [section, param] = hash.slice(2).split('/');
   if (section === 'shop') {
+    const previousCategory = activeCategory;
     activeCategory = param && categoryById(param) ? param : activeCategory;
     if (!categoryById(activeCategory) && activeCategory !== 'all') activeCategory = 'all';
-    if (!param) activeCategory = 'all';
+    if (!param) {
+      activeCategory = 'all';
+      resetShopSearch();
+    } else if (param !== previousCategory) {
+      resetShopSearch();
+    }
     showView('shop');
     renderChips();
     renderProductGrid();
@@ -398,6 +501,7 @@ document.addEventListener('click', (event) => {
   const chip = event.target.closest('.chip');
   if (chip) {
     activeCategory = chip.dataset.cat;
+    resetShopSearch();
     renderChips();
     renderProductGrid();
   }

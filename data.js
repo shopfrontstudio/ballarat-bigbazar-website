@@ -133,6 +133,8 @@ export const PRODUCTS = [
   { id: 'onions-2kg', cat: 'fresh', brand: 'Fresh', name: 'Brown Onions', size: '2 kg bag', price: 5 },
   { id: 'tomatoes', cat: 'fresh', brand: 'Fresh', name: 'Tomatoes', size: 'per kg', price: 6 },
   { id: 'lemons', cat: 'fresh', brand: 'Fresh', name: 'Lemons', size: 'each', price: 1.2 },
+  { id: 'cabbage', cat: 'fresh', brand: 'Fresh', name: 'Cabbage', size: 'each', price: 5 },
+  { id: 'lettuce', cat: 'fresh', brand: 'Fresh', name: 'Lettuce', size: 'each', price: 4 },
 ];
 
 export const RECIPES = [
