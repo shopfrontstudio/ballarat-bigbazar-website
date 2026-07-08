@@ -142,6 +142,15 @@ function renderProductGrid() {
     : `<p class="no-results">Nothing matched that search—try a brand like "MDH" or a staple like "atta". Or <a href="mailto:ballaratbigbazar@gmail.com">email us</a>, we probably have it in store.</p>`;
 }
 
+function applyShopSearchFromHero(value) {
+  searchTerm = value || '';
+  activeCategory = 'all';
+  const input = $('#shop-search');
+  if (input) input.value = searchTerm;
+  renderChips();
+  renderProductGrid();
+}
+
 /* ---------- Recipes ---------- */
 function recipeCard(recipe) {
   return `<a class="recipe-card" href="#/recipe/${recipe.id}">
@@ -400,6 +409,13 @@ document.addEventListener('keydown', (event) => {
     closeModals();
     closeCart();
   }
+});
+
+$('.hero-search')?.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const value = event.currentTarget.querySelector('input')?.value.trim() || '';
+  if (location.hash !== '#/shop') location.hash = '#/shop';
+  requestAnimationFrame(() => applyShopSearchFromHero(value));
 });
 
 $('#shop-search').addEventListener('input', (event) => {
