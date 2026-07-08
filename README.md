@@ -54,10 +54,26 @@ The finished site is generated in `dist/`.
 
 ## Product photos
 
-Photos in `assets/products/` are genuine packshots sourced from
-[Open Food Facts](https://world.openfoodfacts.org) (CC BY-SA — attribution is
-in the site footer). Cards fall back to a styled category tile when no photo
-exists (mostly house-brand importer lines like Pattu/Shudh/Indya that aren't
-in Open Food Facts). To add or replace a photo, drop a `<product-id>.jpg`
-into `assets/products/` — best of all, replace them over time with photos
-taken in store.
+Use only product images that are either:
+
+- photographed by Ballarat Bigbazar/the site owner;
+- openly licensed with attribution recorded; or
+- supplied by the product distributor/brand with permission.
+
+Do **not** use random Google Images, Blinkit, Zepto, Coles, Woolworths or other
+marketplace catalogue photos unless their licence explicitly allows reuse.
+
+To search for exact open-licensed product packshots and save them into
+`assets/products/`, run:
+
+```bash
+python3 scripts/fetch_open_product_images.py
+```
+
+The fetcher searches Open Food Facts, downloads only confident exact matches,
+compresses them into catalogue-style square JPGs, and writes source records to
+`assets/products/open-image-sources.json` plus `IMAGE_SOURCES.md`.
+
+Cards fall back to a styled category tile when no exact reusable photo exists.
+For private-label/importer lines like Pattu, Shudh, Indya, DT or CK, the best
+long-term answer is usually to photograph the products in store.
