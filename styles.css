@@ -233,43 +233,21 @@ body.drawer-open{overflow:hidden}
 @media(max-width:640px){.hero-search{grid-template-columns:40px 1fr;height:54px;margin-bottom:24px}.hero-search button{display:none}.hero-search input{font-size:13px}.category-card{border-radius:20px}.catalogue-stack img{max-width:50%;max-height:72%;border-radius:14px}.catalogue-pack{width:110px;height:110px;font-size:19px}.fresh-catalogue{border-radius:24px;padding:12px}.fresh-catalogue>img{border-radius:18px}.fresh-mini-grid a{border-radius:14px;min-height:68px}}
 
 /* ===== v4 — smarter shop UX and richer imagery ===== */
-.floating-recipe-cta{position:fixed;right:18px;top:50%;z-index:70;width:172px;height:226px;color:var(--green-dark);text-decoration:none;display:block;transform:translate(34px,-50%) scale(.92);opacity:0;filter:drop-shadow(0 24px 28px rgba(14,42,32,.28));animation:recipeCtaPop .62s cubic-bezier(.2,1.18,.34,1) .2s forwards}
+.floating-recipe-cta{position:fixed;right:28px;top:50%;z-index:70;width:150px;height:150px;color:var(--green-dark);text-decoration:none;display:grid;place-items:center;transform:translate(28px,-50%) scale(.9);opacity:0;filter:drop-shadow(0 18px 28px rgba(14,42,32,.2));animation:recipeBadgePop .5s cubic-bezier(.2,1.08,.3,1) .2s forwards}
 body:not([data-view=home]) .floating-recipe-cta{display:none}
-.recipe-kadhai-stage{position:absolute;left:-7px;top:-10px;width:184px;height:150px;display:block;transform-origin:50% 82%;transition:transform .28s ease}
-.recipe-kadhai-stage:after{content:"";position:absolute;left:38px;right:32px;bottom:16px;height:18px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(13,24,19,.38),rgba(13,24,19,0) 72%);filter:blur(5px);z-index:0}
-.recipe-kadhai-photo{position:absolute;left:0;right:0;bottom:24px;width:100%;height:auto;z-index:4;display:block;transform-origin:52% 76%;filter:drop-shadow(0 12px 10px rgba(16,25,19,.28));transition:transform .32s ease,filter .32s ease}
-.recipe-cooktop{position:absolute;left:56px;right:46px;bottom:15px;height:25px;border-radius:50%;background:radial-gradient(ellipse at center,#32241d 0%,#151715 60%,#050605 100%);box-shadow:inset 0 2px 6px rgba(255,255,255,.08),0 6px 12px rgba(0,0,0,.28);display:block;z-index:1}
-.recipe-cooktop:after{content:"";position:absolute;left:-9px;right:-9px;bottom:2px;height:22px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(255,91,23,.28),rgba(255,91,23,0) 72%);filter:blur(8px);opacity:.38;transition:opacity .2s}
-.recipe-flame{position:absolute;bottom:12px;left:50%;width:18px;height:36px;border-radius:48% 52% 50% 50%;background:radial-gradient(circle at 50% 75%,#5fb7ff 0 16%,transparent 18%),linear-gradient(180deg,#fff8bd 0%,#ffd45a 24%,#ff7a24 58%,#c93118 100%);filter:blur(.05px) drop-shadow(0 0 8px rgba(255,99,20,.62));clip-path:polygon(50% 0,72% 28%,64% 54%,86% 100%,50% 82%,14% 100%,35% 54%,27% 28%);transform-origin:50% 100%;opacity:.62;display:block;transition:opacity .2s,filter .2s,z-index .2s;z-index:3}
-.recipe-flame:after{content:"";position:absolute;left:6px;bottom:4px;width:7px;height:18px;border-radius:50%;background:linear-gradient(180deg,#fff,#ffd86a 72%,rgba(255,216,106,0));opacity:.7}
-.recipe-flame-left{margin-left:-22px;transform:scale(.56,.72) rotate(-8deg)}
-.recipe-flame-centre{margin-left:-8px;transform:scale(.75,.88)}
-.recipe-flame-right{margin-left:9px;transform:scale(.48,.68) rotate(10deg)}
-.recipe-steam{position:absolute;top:3px;width:18px;height:42px;border-radius:50%;border-left:2px solid rgba(255,255,255,.48);filter:blur(.8px);opacity:.32;display:block;animation:recipeSteam 3.2s ease-in-out infinite;z-index:2}
-.recipe-steam-one{left:58px;animation-delay:.1s}
-.recipe-steam-two{left:83px;height:54px;animation-delay:.65s}
-.recipe-steam-three{left:109px;animation-delay:1.05s}
-.recipe-paper-label{position:absolute;left:8px;right:8px;bottom:3px;min-height:62px;padding:16px 12px 13px;display:grid;place-items:center;text-align:center;background:linear-gradient(145deg,#fff9e9,#e8d5ac);border:1px solid rgba(96,62,30,.18);border-radius:4px 14px 5px 13px;box-shadow:0 10px 26px rgba(48,36,20,.2),inset 0 1px rgba(255,255,255,.9);transform:rotate(-2deg);transition:transform .25s ease}
-.recipe-paper-label:before,.recipe-paper-label:after{content:"";position:absolute;top:0;bottom:0;width:1px;background:rgba(124,87,47,.09)}
-.recipe-paper-label:before{left:17px}.recipe-paper-label:after{right:20px}
-.recipe-paper-label strong{position:relative;z-index:1;font:800 13px/1.14 var(--sans);letter-spacing:.01em;color:#173d2d;text-shadow:0 1px rgba(255,255,255,.8)}
-.recipe-pin{position:absolute;top:-8px;left:50%;width:18px;height:18px;border-radius:50%;background:radial-gradient(circle at 38% 33%,#fff7ca,#d79725 42%,#7c4318 100%);box-shadow:0 2px 4px rgba(64,36,11,.28);transform:translateX(-50%);display:block}
-.floating-recipe-cta:hover,.floating-recipe-cta:focus-visible{transform:translate(0,-50%) scale(1.02);filter:drop-shadow(0 29px 30px rgba(14,42,32,.3));outline:0}
-.floating-recipe-cta:hover .recipe-kadhai-stage,.floating-recipe-cta:focus-visible .recipe-kadhai-stage{transform:translateY(-5px)}
-.floating-recipe-cta:hover .recipe-kadhai-photo,.floating-recipe-cta:focus-visible .recipe-kadhai-photo{animation:recipeKadhaiToss .78s ease-in-out infinite;filter:drop-shadow(0 16px 12px rgba(16,25,19,.34))}
-.floating-recipe-cta:hover .recipe-cooktop:after,.floating-recipe-cta:focus-visible .recipe-cooktop:after{opacity:1}
-.floating-recipe-cta:hover .recipe-flame,.floating-recipe-cta:focus-visible .recipe-flame{opacity:1;filter:drop-shadow(0 0 18px rgba(255,90,18,.98)) drop-shadow(0 0 10px rgba(70,165,255,.45));z-index:5}
-.floating-recipe-cta:hover .recipe-flame-left,.floating-recipe-cta:focus-visible .recipe-flame-left{animation:recipeFlameLeft .24s ease-in-out infinite alternate}
-.floating-recipe-cta:hover .recipe-flame-centre,.floating-recipe-cta:focus-visible .recipe-flame-centre{animation:recipeFlameCentre .2s ease-in-out infinite alternate}
-.floating-recipe-cta:hover .recipe-flame-right,.floating-recipe-cta:focus-visible .recipe-flame-right{animation:recipeFlameRight .22s ease-in-out infinite alternate}
-.floating-recipe-cta:hover .recipe-paper-label,.floating-recipe-cta:focus-visible .recipe-paper-label{transform:rotate(1.5deg) translateY(-2px)}
-@keyframes recipeCtaPop{0%{opacity:0;transform:translate(58px,-46%) scale(.72) rotate(4deg)}72%{opacity:1;transform:translate(-5px,-50%) scale(1.04) rotate(-1deg)}100%{opacity:1;transform:translate(0,-50%) scale(1) rotate(0)}}
-@keyframes recipeSteam{0%,100%{transform:translateY(8px) scale(.7);opacity:0}35%{opacity:.48}70%{transform:translateY(-9px) scale(1);opacity:.08}}
-@keyframes recipeKadhaiToss{0%,100%{transform:rotate(0) translateY(0)}34%{transform:rotate(-5deg) translate(-3px,-2px)}62%{transform:rotate(4deg) translate(3px,1px)}}
-@keyframes recipeFlameLeft{to{transform:scale(1.05,1.95) rotate(-20deg) translateY(-11px)}}
-@keyframes recipeFlameCentre{to{transform:scale(1.35,2.35) translateY(-15px)}}
-@keyframes recipeFlameRight{to{transform:scale(.96,1.85) rotate(19deg) translateY(-10px)}}
-@media(prefers-reduced-motion:reduce){.floating-recipe-cta{opacity:1;transform:translate(0,-50%) scale(1);animation:none}.recipe-steam,.floating-recipe-cta:hover .recipe-kadhai-photo,.floating-recipe-cta:focus-visible .recipe-kadhai-photo,.floating-recipe-cta:hover .recipe-flame-left,.floating-recipe-cta:focus-visible .recipe-flame-left,.floating-recipe-cta:hover .recipe-flame-centre,.floating-recipe-cta:focus-visible .recipe-flame-centre,.floating-recipe-cta:hover .recipe-flame-right,.floating-recipe-cta:focus-visible .recipe-flame-right{animation:none}}
+.recipe-star-badge{position:relative;width:132px;height:132px;display:grid;place-items:center;text-align:center;padding:23px 19px 18px;background:linear-gradient(145deg,#ffc448 0%,#f2a936 52%,#d97a35 100%);clip-path:polygon(50% 0,63% 15%,84% 11%,89% 32%,100% 50%,89% 68%,84% 89%,63% 85%,50% 100%,37% 85%,16% 89%,11% 68%,0 50%,11% 32%,16% 11%,37% 15%);box-shadow:inset 0 1px rgba(255,255,255,.55),inset 0 -12px 22px rgba(121,58,21,.15),0 16px 36px rgba(27,48,34,.22);transition:transform .24s ease,box-shadow .24s ease,filter .24s ease}
+.recipe-star-badge:before{content:"";position:absolute;inset:8px;clip-path:inherit;background:linear-gradient(145deg,rgba(255,255,255,.32),rgba(255,255,255,0) 45%);opacity:.75;pointer-events:none}
+.recipe-star-badge:after{content:"";position:absolute;inset:12px;clip-path:inherit;border:1px solid rgba(23,61,45,.28);pointer-events:none}
+.recipe-star-kicker{position:relative;z-index:1;margin-top:2px;font-size:9px;line-height:1;font-weight:900;text-transform:uppercase;letter-spacing:.16em;color:rgba(23,61,45,.72)}
+.recipe-star-badge strong{position:relative;z-index:1;display:block;max-width:92px;margin-top:-2px;font:900 16px/1.05 var(--sans);letter-spacing:-.02em;color:#143629;text-shadow:0 1px rgba(255,255,255,.48)}
+.recipe-star-arrow{position:relative;z-index:1;width:25px;height:25px;margin-top:-4px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.72);box-shadow:inset 0 -1px rgba(23,61,45,.1);font-weight:900;color:#143629}
+.floating-recipe-cta:hover,.floating-recipe-cta:focus-visible{transform:translate(0,-50%) scale(1.02);filter:drop-shadow(0 24px 34px rgba(14,42,32,.28));outline:0}
+.floating-recipe-cta:hover .recipe-star-badge,.floating-recipe-cta:focus-visible .recipe-star-badge{transform:rotate(-4deg) translateY(-4px);box-shadow:inset 0 1px rgba(255,255,255,.65),inset 0 -12px 22px rgba(121,58,21,.12),0 21px 42px rgba(27,48,34,.28);filter:saturate(1.08)}
+.floating-recipe-cta:hover .recipe-star-arrow,.floating-recipe-cta:focus-visible .recipe-star-arrow{animation:recipeArrowNudge .72s ease-in-out infinite}
+@keyframes recipeBadgePop{0%{opacity:0;transform:translate(54px,-50%) scale(.72) rotate(8deg)}74%{opacity:1;transform:translate(-4px,-50%) scale(1.04) rotate(-2deg)}100%{opacity:1;transform:translate(0,-50%) scale(1) rotate(0)}}
+@keyframes recipeArrowNudge{0%,100%{transform:translateX(0)}50%{transform:translateX(3px)}}
+@media(prefers-reduced-motion:reduce){.floating-recipe-cta{opacity:1;transform:translate(0,-50%) scale(1);animation:none}.floating-recipe-cta:hover .recipe-star-arrow,.floating-recipe-cta:focus-visible .recipe-star-arrow{animation:none}}
+@media(max-width:760px){.floating-recipe-cta{right:10px;width:118px;height:118px}.recipe-star-badge{width:108px;height:108px;padding:18px 14px 14px}.recipe-star-kicker{font-size:7px}.recipe-star-badge strong{font-size:13px;max-width:76px}.recipe-star-arrow{width:21px;height:21px;font-size:12px}}
 .product-tile-fresh img{object-fit:cover;padding:0;background:#f7f2e8}
 .product-tile-fresh .tile-emoji{display:none}
 .recipe-tile,.recipe-hero-tile{position:relative;overflow:hidden}
@@ -280,4 +258,3 @@ body:not([data-view=home]) .floating-recipe-cta{display:none}
 .recipe-hero-tile img{border-radius:inherit}
 .shop #shop-search{box-shadow:0 8px 26px rgba(24,49,41,.06)}
 .no-results{background:#fff;border:1px dashed rgba(23,61,45,.2);border-radius:18px}
-@media(max-width:760px){.floating-recipe-cta{right:4px;width:124px;height:166px;transform:translate(24px,-50%) scale(.88)}.recipe-kadhai-stage{left:-3px;top:-3px;width:132px;height:105px}.recipe-kadhai-photo{bottom:20px}.recipe-cooktop{left:40px;right:34px;bottom:11px;height:19px}.recipe-flame{width:15px;height:27px;bottom:9px}.recipe-steam{top:0;height:34px}.recipe-steam-one{left:43px}.recipe-steam-two{left:60px;height:40px}.recipe-steam-three{left:78px}.recipe-paper-label{left:3px;right:3px;min-height:50px;padding:13px 9px 10px}.recipe-paper-label strong{font-size:11px}.recipe-tile{height:190px}}
