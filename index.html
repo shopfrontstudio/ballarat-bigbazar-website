@@ -11,7 +11,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:image" content="assets/ballarat-bigbazar-hero.png" />
     <title>Ballarat Bigbazar | Indian, Pakistani & Nepalese Groceries + Click & Collect</title>
-    <link rel="stylesheet" href="styles.css?v=recipe-cta-hero-anchor-1" />
+    <link rel="stylesheet" href="styles.css?v=balaji-storefront-functions-1" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -39,7 +39,7 @@
           <span><strong>Ballarat</strong><em>BIGBAZAR</em></span>
         </a>
         <nav class="desktop-nav" aria-label="Main navigation">
-          <a href="#/">Home</a><a href="#/shop">Shop</a><a href="#/recipes">Recipes</a><a href="#visit">Visit us</a>
+          <a href="#/">Home</a><a href="#/shop">All products</a><a href="#aisles">Aisles</a><a href="#/recipes">Recipes</a><a href="#visit">Visit us</a><a href="https://www.google.com/maps/search/?api=1&amp;query=Ballarat+Bigbazar+209+Gillies+St+N+Wendouree+VIC+3355" target="_blank" rel="noopener">Review us</a>
         </nav>
         <div class="nav-actions">
           <button class="cart-button" id="cart-open" aria-label="Open your basket">
@@ -50,7 +50,7 @@
         </div>
       </div>
       <nav class="mobile-nav" aria-label="Mobile navigation">
-        <a href="#/">Home</a><a href="#/shop">Shop the shelves</a><a href="#/recipes">Recipes</a><a href="#visit">Visit us</a><a href="#contact">Contact us</a>
+        <a href="#/">Home</a><a href="#/shop">All products</a><a href="#aisles">Aisles</a><a href="#/recipes">Recipes</a><a href="#visit">Visit us</a><a href="https://www.google.com/maps/search/?api=1&amp;query=Ballarat+Bigbazar+209+Gillies+St+N+Wendouree+VIC+3355" target="_blank" rel="noopener">Review us</a>
       </nav>
     </header>
     <main id="main">
@@ -121,6 +121,31 @@
           </div>
         </section>
 
+        <section class="storefront-actions" aria-label="Storefront shortcuts">
+          <div class="container storefront-actions-grid">
+            <a class="storefront-action-card reveal" href="#/shop">
+              <span>01</span>
+              <strong>All products</strong>
+              <small>Browse the full click &amp; collect shelf.</small>
+            </a>
+            <a class="storefront-action-card reveal" href="#featured-products">
+              <span>02</span>
+              <strong>Featured picks</strong>
+              <small>Popular staples for the week.</small>
+            </a>
+            <a class="storefront-action-card reveal" href="#aisles">
+              <span>03</span>
+              <strong>Shop by aisle</strong>
+              <small>Find spices, rice, snacks and frozen foods faster.</small>
+            </a>
+            <a class="storefront-action-card reveal" href="mailto:ballaratbigbazar@gmail.com?subject=Fresh%20arrival%20alerts&amp;body=Please%20add%20me%20to%20fresh%20arrival%20alerts.">
+              <span>04</span>
+              <strong>Fresh alerts</strong>
+              <small>Ask what arrived before you visit.</small>
+            </a>
+          </div>
+        </section>
+
         <section class="section categories" id="shop-preview">
           <div class="container">
             <div class="section-heading reveal"><div><p class="eyebrow"><span></span> Shop by category</p><h2>Everything your kitchen <i>needs.</i></h2></div><p>Simple categories, clear packs and easy click &amp; collect.</p></div>
@@ -131,6 +156,59 @@
               <article class="category-card card-frozen reveal"><a class="category-card-link" href="#/shop/frozen" aria-label="Shop frozen favourites"><div class="category-visual catalogue-stack"><img src="assets/products/deep-mango-pulp.jpg" alt="Deep Mango Pulp"><span class="catalogue-pack frozen-pack">Paratha<br>Paneer<br>Samosa</span></div><div class="category-info"><span class="card-number">04</span><div><h3>Frozen &amp; dairy</h3><p>Paneer, parathas, samosas, dahi and quick meals.</p></div><span class="category-go" aria-hidden="true">↗</span></div></a></article>
               <article class="category-card card-tea reveal"><a class="category-card-link" href="#/shop/drinks" aria-label="Shop tea and beverages"><div class="category-visual catalogue-stack"><img src="assets/products/wagh-bakri-masala.jpg" alt="Wagh Bakri Masala Tea"><img src="assets/products/red-label-900.jpg" alt="Red Label Tea"><img src="assets/products/rooh-afza.jpg" alt="Rooh Afza"></div><div class="category-info"><span class="card-number">05</span><div><h3>Tea &amp; drinks</h3><p>Chai, soft drinks, syrups and everyday beverages.</p></div><span class="category-go" aria-hidden="true">↗</span></div></a></article>
               <article class="category-card card-home reveal"><a class="category-card-link" href="#/shop/pantry" aria-label="Shop pickles and pantry"><div class="category-visual catalogue-stack"><img src="assets/products/amul-ghee-500.jpg" alt="Amul Ghee"><img src="assets/products/eastern-mango-pickle.jpg" alt="Eastern Mango Pickle"><img src="assets/products/lijjat-papad-cumin.jpg" alt="Lijjat Papad"></div><div class="category-info"><span class="card-number">06</span><div><h3>Pickles &amp; pantry</h3><p>Ghee, oils, chutneys, papad, pickles and cooking helpers.</p></div><span class="category-go" aria-hidden="true">↗</span></div></a></article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section featured-products-section" id="featured-products">
+          <div class="container">
+            <div class="section-heading reveal">
+              <div><p class="eyebrow"><span></span> Featured products</p><h2>Popular things people <i>add first.</i></h2></div>
+              <p>A quick shelf inspired by grocery storefronts: tap Add, review your basket, then collect in store.</p>
+            </div>
+            <div class="featured-product-grid">
+              <article class="featured-product-card reveal" data-id="aashirvaad-10">
+                <div class="featured-product-image"><img src="assets/products/aashirvaad-10.jpg" alt="Aashirvaad Atta 10 kg" loading="lazy"></div>
+                <small>Atta &amp; flours</small><h3>Aashirvaad Atta</h3><p>10 kg</p>
+                <div><strong>$32.00</strong><button class="add-button" data-add="aashirvaad-10">Add <span>+</span></button></div>
+              </article>
+              <article class="featured-product-card reveal" data-id="mdh-garam">
+                <div class="featured-product-image"><img src="assets/products/mdh-garam.jpg" alt="MDH Garam Masala" loading="lazy"></div>
+                <small>Indian spices Ballarat</small><h3>MDH Garam Masala</h3><p>100 g</p>
+                <div><strong>$4.50</strong><button class="add-button" data-add="mdh-garam">Add <span>+</span></button></div>
+              </article>
+              <article class="featured-product-card reveal" data-id="amul-ghee-500">
+                <div class="featured-product-image"><img src="assets/products/amul-ghee-500.jpg" alt="Amul Pure Cow Ghee" loading="lazy"></div>
+                <small>Pickles &amp; pantry</small><h3>Amul Pure Cow Ghee</h3><p>500 ml</p>
+                <div><strong>$12.00</strong><button class="add-button" data-add="amul-ghee-500">Add <span>+</span></button></div>
+              </article>
+              <article class="featured-product-card reveal" data-id="bikano-aloo-bhujia">
+                <div class="featured-product-image"><img src="assets/products/bikano-aloo-bhujia.jpg" alt="Bikano Aloo Bhujia" loading="lazy"></div>
+                <small>Snacks &amp; sweets</small><h3>Bikano Aloo Bhujia</h3><p>1 kg</p>
+                <div><strong>$9.50</strong><button class="add-button" data-add="bikano-aloo-bhujia">Add <span>+</span></button></div>
+              </article>
+            </div>
+            <div class="featured-more reveal"><a class="button button-gold" href="#/shop">View all products <span aria-hidden="true">→</span></a></div>
+          </div>
+        </section>
+
+        <section class="section aisle-directory" id="aisles">
+          <div class="container">
+            <div class="section-heading reveal">
+              <div><p class="eyebrow"><span></span> Aisle directory</p><h2>Find the right shelf <i>fast.</i></h2></div>
+              <p>Simple online aisles for Indian groceries Ballarat, Pakistani groceries Ballarat and Nepalese groceries Ballarat shoppers.</p>
+            </div>
+            <div class="aisle-grid reveal">
+              <a href="#/shop/masalas"><span>🌶️</span><strong>Spices &amp; herbs</strong><small>Masalas, powders and seasonings</small></a>
+              <a href="#/shop/rice"><span>🍚</span><strong>Rice</strong><small>Basmati, sona masoori and grains</small></a>
+              <a href="#/shop/flour"><span>🫓</span><strong>Atta &amp; flours</strong><small>Chapati, roti and cooking flours</small></a>
+              <a href="#/shop/dals"><span>🫘</span><strong>Lentils &amp; beans</strong><small>Dal, daal, pulses and rajma</small></a>
+              <a href="#/shop/pantry"><span>🥭</span><strong>Pickles &amp; pantry</strong><small>Ghee, oils, chutneys and papad</small></a>
+              <a href="#/shop/snacks"><span>🍬</span><strong>Snacks &amp; sweets</strong><small>Namkeen, biscuits, rusk and treats</small></a>
+              <a href="#/shop/frozen"><span>🧊</span><strong>Frozen foods</strong><small>Paratha, naan, paneer and samosas</small></a>
+              <a href="#/shop/drinks"><span>☕</span><strong>Tea &amp; drinks</strong><small>Chai, syrups and beverages</small></a>
+              <a href="#/shop/fresh"><span>🥬</span><strong>Fresh produce</strong><small>Fresh vegetables Ballarat cooks use</small></a>
+              <a href="#/shop/pantry"><span>🪔</span><strong>Pooja &amp; home basics</strong><small>Seasonal and everyday essentials</small></a>
             </div>
           </div>
         </section>
@@ -215,6 +293,17 @@
           </div>
         </section>
 
+        <section class="section updates-section" id="updates">
+          <div class="container updates-panel reveal">
+            <div>
+              <p class="eyebrow"><span></span> Fresh arrival alerts</p>
+              <h2>Want to know what’s <i>new this week?</i></h2>
+              <p>Ask us about fresh vegetables, festival specials, frozen stock and hard-to-find South Asian pantry items before you drive in.</p>
+            </div>
+            <a class="button button-dark" href="mailto:ballaratbigbazar@gmail.com?subject=Fresh%20arrival%20alerts&amp;body=Hi%20Ballarat%20Bigbazar,%20please%20let%20me%20know%20what%20fresh%20items%20and%20specials%20are%20available%20this%20week."><span>Email for updates</span><strong>ballaratbigbazar@gmail.com</strong></a>
+          </div>
+        </section>
+
         <section class="contact" id="contact">
           <div class="container contact-inner reveal">
             <div><p class="eyebrow"><span></span> Looking for something?</p><h2>Let's help you <i>find it.</i></h2><p>Message before you visit and we'll happily check the shelves for you.</p></div>
@@ -229,8 +318,8 @@
           <div class="container">
             <div class="shop-head">
               <p class="eyebrow"><span></span> Click &amp; collect</p>
-              <h2>Shop the <i>shelves.</i></h2>
-              <p class="shop-lead">Add what you need to your basket and send it through—we'll have it packed and waiting. You pay in store when you collect. Prices are a guide and confirmed at pickup.</p>
+              <h2>All products, <i>easy to find.</i></h2>
+              <p class="shop-lead">Search or browse by aisle, add what you need to your basket, and send it through—we'll have it packed and waiting. You pay in store when you collect. Prices are a guide and confirmed at pickup.</p>
               <div class="shop-tools">
                 <input type="search" id="shop-search" placeholder="Search masalas, basmati, Bikano…" aria-label="Search products" />
                 <div class="chip-row" id="chip-row" role="tablist" aria-label="Product categories"></div>
@@ -269,7 +358,7 @@
       <div class="container footer-top">
         <a href="#/" class="brand brand-footer"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 44 44"><path d="M22 5c8 4 13 11 12 19-1 9-8 15-18 15-4-8-3-16 3-22 3-3 7-5 12-6-9 4-14 10-15 20" fill="none" stroke="currentColor" stroke-width="2.5"/></svg></span><span><strong>Ballarat</strong><em>BIGBAZAR</em></span></a>
         <p>Quick-shop South Asian groceries — 209 Gillies St N, Wendouree.</p>
-        <div class="footer-links"><a href="#/shop">Shop the shelves</a><a href="#/recipes">Recipes</a><a href="#about">Our story</a><a href="#visit">Visit us</a></div>
+        <div class="footer-links"><a href="#/shop">All products</a><a href="#aisles">Aisles</a><a href="#featured-products">Featured products</a><a href="#/recipes">Recipes</a><a href="#visit">Visit us</a><a href="https://www.google.com/maps/search/?api=1&amp;query=Ballarat+Bigbazar+209+Gillies+St+N+Wendouree+VIC+3355" target="_blank" rel="noopener">Review us</a></div>
       </div>
       <div class="container footer-bottom"><span>© <span id="year"></span> Ballarat Bigbazar</span><span>Product photos via <a href="https://world.openfoodfacts.org" target="_blank" rel="noopener">Open Food Facts</a> (CC BY-SA) plus original generated sample visuals.</span></div>
     </footer>
